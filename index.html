@@ -3,38 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viraj Mhetar | Under Construction</title>
+    <title>Viraj Ajay Mhetar | Polymer Engineering & AI/ML</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            text-align: center;
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --accent-color: #38bdf8;
+            --card-bg: #1e293b;
         }
-        .container {
-            padding: 20px;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, #020617 0%, var(--bg-color) 100%);
         }
         h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
         }
-        p {
+        h2 {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            font-weight: 400;
+            margin-top: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 4rem;
+        }
+        h3 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--card-bg);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        .card h4 {
+            margin-top: 0;
             font-size: 1.2rem;
-            color: #a0a0a0;
-            font-style: italic;
+            color: #ffffff;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #334155;
+            color: var(--accent-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #0f172a;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: opacity 0.3s ease;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #020617;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+
+    <header>
+        <h1>Viraj Ajay Mhetar</h1>
+        <h2>Polymer Engineering | AI & Machine Learning Minor</h2>
+        <p style="max-width: 600px; margin: 1rem auto; font-size: 1.1rem; color: #94a3b8;">
+            Integrating material science with data-driven predictive modeling. Seeking to leverage hands-on laboratory experience into rigorous graduate research focused on sustainable polymer innovations.
+        </p>
+        <a href="LINK_TO_YOUR_PDF_CV_HERE" class="btn" target="_blank">Download Full CV</a>
+    </header>
+
     <div class="container">
-        <h1>Profile is under construction.</h1>
-        <p>Rome wasn't built in a day, was it?...</p>
+        
+        <section id="computation">
+            <h3>Computational & AI/ML Modeling</h3>
+            
+            <div class="card">
+                <h4>FAEE Trans-esterification Simulation</h4>
+                <p>Developed a specialized simulation in Python for the trans-esterification of oil to produce fatty acid ethyl esters (FAEEs). Engineered a 1500-sample dataset modeling complex chemical penalties, specifically mapping soap formation limits and critical temperature thresholds.</p>
+                <div>
+                    <span class="tag">Python</span>
+                    <span class="tag">Process Simulation</span>
+                    <span class="tag">Predictive Modeling</span>
+                </div>
+                <a href="YOUR_GITHUB_REPO_LINK" target="_blank" style="display: inline-block; margin-top: 1rem;">View Source Code &rarr;</a>
+            </div>
+
+            <div class="card">
+                <h4>Data-Driven Polymer Grade Mapping (Kothari Petrochemicals)</h4>
+                <p><strong>Status:</strong> Under Non-Disclosure Agreement (NDA)</p>
+                <p>Applied Artificial Intelligence and Machine Learning (AI/ML) tools using Python to analyze and map complex datasets. Focused on algorithmic efficiency and advanced data preprocessing techniques to optimize quality control and product categorization pipelines within confidential industry parameters.</p>
+                <div>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Data Preprocessing</span>
+                    <span class="tag">Algorithm Optimization</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="research">
+            <h3>Laboratory Research & Publications</h3>
+            
+            <div class="card">
+                <h4>Detection of Microplastics in Black Soldier Fly Larvae (BSFL)</h4>
+                <p>Developed rigorous experimental protocols to dissolve organic matter and isolate microplastics from complex waste substrates. Utilized compound microscopy and advanced analytical techniques to assess the environmental impact of microplastic biomagnification.</p>
+                <p><strong>Published:</strong> <em>Bombay Technologist</em> (Online ISSN: 0067-9925), 2026.</p>
+                <div>
+                    <span class="tag">Microscopy</span>
+                    <span class="tag">Isolation Protocols</span>
+                    <span class="tag">Environmental Sustainability</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h4>Bio-Based Additives for Biopolymers</h4>
+                <p><strong>Status:</strong> Manuscript in Preparation</p>
+                <p>Engineered wet-lab protocols for the extraction and purification of proteins from ethanol industry waste feedstock. Conducted material compounding via extrusion processes, subsequently evaluating structural and mechanical integrity utilizing FTIR, Rheometry, UTM, and POM.</p>
+                <div>
+                    <span class="tag">Extrusion</span>
+                    <span class="tag">FTIR & Rheometry</span>
+                    <span class="tag">Protein Extraction</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h3>Technical Expertise</h3>
+            <div class="skills-grid">
+                <div class="card">
+                    <h4>Programming & Data Analysis</h4>
+                    <ul>
+                        <li>Python & Machine Learning</li>
+                        <li>Chemical Process Simulation</li>
+                        <li>Predictive & Probabilistic Modeling</li>
+                        <li>Data Visualization</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Core Engineering & Wet-Lab</h4>
+                    <ul>
+                        <li>Polymer Processing (Extrusion)</li>
+                        <li>Chemical Recycling (e.g., isolating monomeric BHET via PET methanolysis)</li>
+                        <li>Protein Extraction & Purification</li>
+                        <li>Microplastic Isolation Methods</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Instrumentation</h4>
+                    <ul>
+                        <li>Fourier Transform Infrared Spectroscopy (FTIR)</li>
+                        <li>Rheometry & Universal Testing Machine (UTM)</li>
+                        <li>Polarized Optical Microscopy (POM)</li>
+                        <li>Compound Microscopy</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h3>Beyond the Lab</h3>
+            <p>Scientific innovation requires discipline, spatial reasoning, and strategic patience. When I am not modeling reactor mechanisms or isolating polymers, I invest my time in:</p>
+            <ul>
+                <li><strong>3D Modeling & Industrial Design:</strong> Conceptualizing mechanisms like motor-less spinning reactors and rotating sparger disks.</li>
+                <li><strong>Competitive Chess:</strong> Continuously analyzing tactical improvements and game dynamics.</li>
+                <li><strong>Functional Strength Training:</strong> Prioritizing bodyweight calisthenics and raw functional strength over standard hypertrophy.</li>
+                <li><strong>Technical Writing:</strong> Translating complex chemical phenomena into clear, accessible documentation.</li>
+            </ul>
+        </section>
+
     </div>
+
+    <footer>
+        <p>Viraj Ajay Mhetar &copy; 2026 | ICT Mumbai</p>
+        <p>
+            <a href="YOUR_LINKEDIN_URL" target="_blank">LinkedIn</a> &nbsp;|&nbsp; 
+            <a href="YOUR_GITHUB_URL" target="_blank">GitHub</a> &nbsp;|&nbsp; 
+            <a href="mailto:23polva_mheter@ug.ictmumbai.edu.in">Email</a>
+        </p>
+    </footer>
+
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viraj Ajay Mhetar | Polymer Engineering & AI/ML</title>
+    <title>Viraj Ajay Mhetar | Bachelor's in Technology specialization in Polymer Engineering & Technology | Minoring in Artificial Intelligence & Machine Learning</title>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -18,6 +18,28 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
+        }
+        /* Sticky Navigation Bar */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #1e293b;
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+        }
+        nav a {
+            color: var(--text-color);
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--accent-color);
+            text-decoration: none;
         }
         header {
             text-align: center;
@@ -42,6 +64,7 @@
         }
         section {
             margin-bottom: 4rem;
+            scroll-margin-top: 80px; /* Prevents sticky nav from hiding section headers */
         }
         h3 {
             font-size: 1.8rem;
@@ -84,6 +107,7 @@
         }
         .btn:hover {
             opacity: 0.8;
+            text-decoration: none;
         }
         .skills-grid {
             display: grid;
@@ -108,23 +132,31 @@
 </head>
 <body>
 
+    <nav>
+        <a href="#computation">Some Experiments with Python and Coding</a>
+        <a href="#experience">Some Achievements</a>
+        <a href="#research">Research Work</a>
+        <a href="#skills">Skill Set</a>
+        <a href="#about">Beyond the Lab</a>
+    </nav>
+
     <header>
         <h1>Viraj Ajay Mhetar</h1>
-        <h2>Polymer Engineering | AI & Machine Learning Minor</h2>
+        <h2>Bachelor's in Technology specialization in Polymer Engineering & Technology | Minoring in Artificial Intelligence & Machine Learning</h2>
         <p style="max-width: 600px; margin: 1rem auto; font-size: 1.1rem; color: #94a3b8;">
-            Integrating material science with data-driven predictive modeling. Seeking to leverage hands-on laboratory experience into rigorous graduate research focused on sustainable polymer innovations.
+            Integrating Data Science with Polymer Engineering for Sustainable Solutions, Property Modeling and Innovative Research. Seeking to leverage hands-on laboratory experience into rigorous research focused on sustainable and closed-loop polymer innovations.
         </p>
-        <a href="LINK_TO_YOUR_PDF_CV_HERE" class="btn" target="_blank">Download Full CV</a>
+        <a href="assets/Viraj_Mhetar_CV.pdf" class="btn" target="_blank">Download Full CV</a>
     </header>
 
     <div class="container">
         
         <section id="computation">
-            <h3>Computational & AI/ML Modeling</h3>
+            <h3>Some Experiments with Python and Coding</h3>
             
             <div class="card">
                 <h4>FAEE Trans-esterification Simulation</h4>
-                <p>Developed a specialized simulation in Python for the trans-esterification of oil to produce fatty acid ethyl esters (FAEEs). Engineered a 1500-sample dataset modeling complex chemical penalties, specifically mapping soap formation limits and critical temperature thresholds.</p>
+                <p>Experimented with a specialized simulation in Python for the trans-esterification of oil to produce Fatty Acid Ethyl Esters (FAEEs). In it, Engineered a 1500-sample dataset for modeling complex chemical penalties (relations), specifically trying to understand soap formation limits and effect of temperature.</p>
                 <div>
                     <span class="tag">Python</span>
                     <span class="tag">Process Simulation</span>
@@ -134,13 +166,45 @@
             </div>
 
             <div class="card">
-                <h4>Data-Driven Polymer Grade Mapping (Kothari Petrochemicals)</h4>
-                <p><strong>Status:</strong> Under Non-Disclosure Agreement (NDA)</p>
-                <p>Applied Artificial Intelligence and Machine Learning (AI/ML) tools using Python to analyze and map complex datasets. Focused on algorithmic efficiency and advanced data preprocessing techniques to optimize quality control and product categorization pipelines within confidential industry parameters.</p>
+                <h4>OpenFTIR: FTIR Spectrum Analyzer</h4>
+                <p>Created a FTIR Analyzer tool which helps create Publication ready FTIR Spectrum plots. Skill Stack in this includes Rule-based Coding & Interface Designing</p>
                 <div>
-                    <span class="tag">Machine Learning</span>
-                    <span class="tag">Data Preprocessing</span>
-                    <span class="tag">Algorithm Optimization</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">FTIR Analysis</span>
+                </div>
+            </div>
+        </section>               
+        
+        <section id="experience">
+            <h3>Some Achievements</h3>
+            
+            <div class="card">
+                <h4>1st Prize IDP Solution | ACP Rangotsav 2026 | Valorization of UPR effluent</h4>
+                <p>Developed and presented an award-winning technical solution for Unsaturated Polyester Resin (UPR) effluent valorization.</p>
+                
+                <div style="margin-top: 1rem; margin-bottom: 1.5rem;">
+                    <a href="./assets/Valorization_Presentation.pdf" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; margin-right: 10px;">
+                        - View Presentation
+                    </a>
+                    <a href="./assets/Valorization_Presentation.pdf" download class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; background-color: #334155; color: var(--accent-color);">
+                        - Download PDF
+                    </a>
+                </div>
+
+                <div>
+                    <span class="tag">Effluent Valorization</span>
+                    <span class="tag">Industry Defined Problem</span>
+                    <span class="tag">Technical Presentation</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h4>Placed Top 5 | CCPCT | Awarded Certificate and Prize Money</h4>
+                <p>Completed a Certificate Course in Practice of Chemical Technology (CCPCT) with a total marks of 37 out of 40. In the course, I understood IP Laws, Marketing 101, and many more topics which will help me navigate professional endeavours.</p>
+                <div>
+                    <span class="tag">Certificate Course</span>
+                    <span class="tag">Industrial Related Experience</span>
+                    <span class="tag">Recognition Award</span>
                 </div>
             </div>
         </section>
@@ -151,7 +215,13 @@
             <div class="card">
                 <h4>Detection of Microplastics in Black Soldier Fly Larvae (BSFL)</h4>
                 <p>Developed rigorous experimental protocols to dissolve organic matter and isolate microplastics from complex waste substrates. Utilized compound microscopy and advanced analytical techniques to assess the environmental impact of microplastic biomagnification.</p>
-                <p><strong>Published:</strong> <em>Bombay Technologist</em> (Online ISSN: 0067-9925), 2026.</p>
+                <p style="margin-bottom: 0.5rem;"><strong>Published:</strong> <em>Bombay Technologist</em> (Online ISSN: 0067-9925), 2026.</p>
+                
+                <!-- Added DOI Link Here -->
+                <a href="https://doi.org/10.36664/bt/2026/v72i1/173238" target="_blank" style="font-size: 0.95rem; font-weight: bold; margin-bottom: 1rem; display: inline-block;">
+                    Read Publication (DOI) &rarr;
+                </a>
+
                 <div>
                     <span class="tag">Microscopy</span>
                     <span class="tag">Isolation Protocols</span>
@@ -187,7 +257,7 @@
                     <h4>Core Engineering & Wet-Lab</h4>
                     <ul>
                         <li>Polymer Processing (Extrusion)</li>
-                        <li>Chemical Recycling (e.g., isolating monomeric BHET via PET methanolysis)</li>
+                        <li>Chemical Recycling (e.g., isolating Dimethyl Terephthalate (DMT) via PET methanolysis)</li>
                         <li>Protein Extraction & Purification</li>
                         <li>Microplastic Isolation Methods</li>
                     </ul>

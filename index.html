@@ -1,308 +1,648 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viraj Ajay Mhetar | Bachelor's in Technology with specialization in Polymer Engineering & Technology | Minoring in Artificial Intelligence & Machine Learning</title>
+    <title>Viraj Ajay Mhetar | Polymer Engineering & AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        :root {
-            --bg-color: #f8fafc; /* Professional light background */
-            --text-color: #334155; /* Dark slate for high readability */
-            --heading-color: #0f172a; /* Deep navy for headings */
-            --accent-color: #0284c7; /* Trustworthy corporate blue */
-            --card-bg: #ffffff; /* Clean white for cards */
-            --header-bg: #0f172a; /* Dark header to ground the page */
-        }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
         }
-        /* Sticky Navigation Bar */
-        nav {
-            position: sticky;
-            top: 0;
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 1rem;
-            text-align: center;
-            border-bottom: 1px solid #e2e8f0;
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        .hmi-panel {
+            background: radial-gradient(120% 140% at 15% 0%, #1b2431 0%, #10151c 55%, #0b0f14 100%);
+            border: 1px solid #232f3e;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
-        nav a {
-            color: var(--text-color);
-            margin: 0 15px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
+        
+        .glass-barrel {
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.0) 50%, rgba(255,255,255,0.02) 100%);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
         }
-        nav a:hover {
-            color: var(--accent-color);
-            text-decoration: none;
+
+        @keyframes pulseGlow { 
+            0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 8px currentColor); } 
+            50% { opacity: 1; filter: drop-shadow(0 0 15px currentColor); } 
         }
-        header {
-            text-align: center;
-            padding: 4rem 2rem;
-            background-color: var(--header-bg);
-            color: #ffffff;
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-        }
-        h2 {
-            font-size: 1.5rem;
-            color: #38bdf8; /* Kept the bright blue here for contrast against dark header */
-            font-weight: 400;
-            margin-top: 0;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        section {
-            margin-bottom: 4rem;
-            scroll-margin-top: 80px; /* Prevents sticky nav from hiding section headers */
-        }
-        h3 {
-            font-size: 1.8rem;
-            color: var(--heading-color);
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .card {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--accent-color);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Added subtle shadow for depth */
-        }
-        .card h4 {
-            margin-top: 0;
-            font-size: 1.2rem;
-            color: var(--heading-color);
-        }
-        .tag {
-            display: inline-block;
-            background-color: #e0f2fe; /* Light blue tag background */
-            color: #0369a1; /* Dark blue tag text */
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #ffffff;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: opacity 0.3s ease;
-        }
-        .btn:hover {
-            opacity: 0.8;
-            text-decoration: none;
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--header-bg);
-            font-size: 0.9rem;
+        .live-dot { animation: blinkDot 1.4s infinite; }
+        @keyframes blinkDot { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+        canvas { display: block; width: 100%; }
+        
+        table.cheat-sheet th {
+            background-color: #1e293b;
             color: #94a3b8;
+            font-weight: 600;
         }
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
+        table.cheat-sheet tr:nth-child(even) { background-color: rgba(30, 41, 59, 0.3); }
+        table.cheat-sheet tr:hover { background-color: rgba(51, 65, 85, 0.5); }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-blue-200 selection:text-blue-900">
 
-    <nav>
-        <a href="#computation">Some Experiments with Python and Coding</a>
-        <a href="#experience">Some Achievements</a>
-        <a href="#research">Research Work</a>
-        <a href="#skills">Skill Set</a>
-        <a href="#about">Beyond the Lab</a>
-    </nav>
+    <div class="flex flex-col md:flex-row min-h-screen">
 
-    <header>
-        <h1>Viraj Ajay Mhetar</h1>
-        <h2>Bachelor's in Technology specialization in Polymer Engineering & Technology | Minoring in Artificial Intelligence & Machine Learning</h2>
-        <p style="max-width: 600px; margin: 1rem auto; font-size: 1.1rem; color: #94a3b8;">
-            Integrating Data Science with Polymer Engineering for Sustainable Solutions, Property Modeling and Innovative Research. Seeking to leverage hands-on laboratory experience into rigorous research focused on sustainable and closed-loop polymer innovations.
-        </p>
-        <a href="assets/Viraj_Mhetar_CV.pdf" class="btn" target="_blank">Download Full CV</a>
-    </header>
-
-    <div class="container">
-        
-        <section id="computation">
-            <h3>Some Experiments with Python and Coding</h3>
-            
-            <div class="card">
-                <h4>FAEE Trans-esterification Simulation</h4>
-                <p>Experimented with a specialized simulation in Python for the trans-esterification of oil to produce Fatty Acid Ethyl Esters (FAEEs). In it, Engineered a 1500-sample dataset for modeling complex chemical penalties (relations), specifically trying to understand soap formation limits and effect of temperature.</p>
-                <div>
-                    <span class="tag">Python</span>
-                    <span class="tag">Process Simulation</span>
-                    <span class="tag">Predictive Modeling</span>
+        <!-- Left Sidebar -->
+        <aside class="w-full md:w-72 bg-slate-900 text-slate-300 md:fixed md:h-screen flex flex-col shadow-xl z-40">
+            <div class="p-8 flex flex-col items-center border-b border-slate-800">
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-slate-700 mb-4 bg-slate-800 flex items-center justify-center">
+                    <!-- Replace with your actual photo path -->
+                    <img src="https://placehold.co/150x150/1e293b/ffffff?text=VM" alt="Viraj Mhetar" class="w-full h-full object-cover">
                 </div>
-                <a href="YOUR_GITHUB_REPO_LINK" target="_blank" style="display: inline-block; margin-top: 1rem;">View Source Code &rarr;</a>
+                <h1 class="text-2xl font-bold text-white text-center leading-tight mb-2">Viraj Ajay Mhetar</h1>
+                <p class="text-sm text-center text-blue-400 font-medium">B.Tech in Polymer Engineering</p>
+                <p class="text-xs text-center text-slate-400 mt-1">Minor in AI & ML</p>
             </div>
 
-            <div class="card">
-                <h4>OpenFTIR: FTIR Spectrum Analyzer</h4>
-                <p>Created a FTIR Analyzer tool which helps create Publication ready FTIR Spectrum plots. Skill Stack in this includes Rule-based Coding & Interface Designing</p>
-                <div>
-                    <span class="tag">Python</span>
-                    <span class="tag">FTIR Analysis</span>
-                </div>
-            </div>
-        </section>               
-        
-        <section id="experience">
-            <h3>Some Achievements</h3>
-            
-            <div class="card">
-                <h4>1st Prize IDP Solution | ACP Rangotsav 2026 | Valorization of UPR effluent</h4>
-                <p>Developed and presented an award-winning technical solution for Unsaturated Polyester Resin (UPR) effluent valorization.</p>
-                
-                <div style="margin-top: 1rem; margin-bottom: 1.5rem;">
-                    <a href="./assets/Valorization_Presentation.pdf" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; margin-right: 10px;">
-                        - View Presentation
+            <nav class="flex-1 px-6 py-8 space-y-2 overflow-y-auto">
+                <a href="#intro" class="block px-4 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition-colors">Introduction</a>
+                <a href="#simulation" class="block px-4 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition-colors">Extruder Simulation</a>
+                <a href="#computation" class="block px-4 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition-colors">Experiments & Code</a>
+                <a href="#experience" class="block px-4 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition-colors">Achievements</a>
+                <a href="#research" class="block px-4 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition-colors">Research Work</a>
+                <a href="#skills" class="block px-4 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition-colors">Skill Set</a>
+                <a href="#about" class="block px-4 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition-colors">Beyond the Lab</a>
+            </nav>
+
+            <div class="p-6 border-t border-slate-800 bg-slate-950">
+                <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Contact</h4>
+                <div class="space-y-2 text-sm">
+                    <a href="mailto:23polva_mheter@ug.ictmumbai.edu.in" class="flex items-center hover:text-blue-400 transition-colors">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        Edu Email
                     </a>
-                    <a href="./assets/Valorization_Presentation.pdf" download class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; background-color: #f1f5f9; color: var(--heading-color); border: 1px solid #cbd5e1;">
-                        - Download PDF
+                    <a href="mailto:virajmhetar2@gmail.com" class="flex items-center hover:text-blue-400 transition-colors">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
+                        Personal Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/viraj-mhetar-912252285/" target="_blank" class="flex items-center hover:text-blue-400 transition-colors">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/VAMpire29122004" target="_blank" class="flex items-center hover:text-blue-400 transition-colors">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
                     </a>
                 </div>
-
-                <div>
-                    <span class="tag">Effluent Valorization</span>
-                    <span class="tag">Industry Defined Problem</span>
-                    <span class="tag">Technical Presentation</span>
-                </div>
             </div>
-            
-            <div class="card">
-                <h4>Placed Top 5 | CCPCT | Awarded Certificate and Prize Money</h4>
-                <p>Completed a Certificate Course in Practice of Chemical Technology (CCPCT) with a total marks of 37 out of 40. In the course, I understood IP Laws, Marketing 101, and many more topics which will help me navigate professional endeavours.</p>
-                <div>
-                    <span class="tag">Certificate Course</span>
-                    <span class="tag">Industrial Related Experience</span>
-                    <span class="tag">Recognition Award</span>
+        </aside>
+
+        <!-- Right Main Content -->
+        <main class="flex-1 md:ml-72 bg-white min-h-screen">
+
+            <!-- Intro Section -->
+            <section id="intro" class="px-8 py-16 md:py-24 bg-slate-50 border-b border-slate-200">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Hello Reader,</h2>
+                    <p class="text-lg md:text-xl text-slate-600 leading-relaxed mb-8">
+                        I am <span class="font-bold text-blue-700">Viraj Ajay Mhetar</span>, integrating Data Science with Polymer Engineering for Sustainable Solutions, Property Modeling, and Innovative Research. I am seeking to leverage hands-on laboratory experience into rigorous research focused on sustainable and closed-loop polymer innovations.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#simulation" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-500/30">
+                            View Extruder Simulator
+                        </a>
+                        <a href="assets/Viraj_Mhetar_CV.pdf" target="_blank" class="bg-white text-slate-700 border border-slate-300 px-6 py-3 rounded-lg font-semibold hover:bg-slate-50 transition shadow-sm">
+                            Download Full CV
+                        </a>
+                    </div>
                 </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- TWIN SCREW EXTRUDER SIMULATION                               -->
+            <!-- ============================================================ -->
+            <section id="simulation" class="px-8 py-14 border-b border-slate-200 bg-slate-50">
+                <div class="max-w-6xl mx-auto">
+                    <div class="mb-6">
+                        <h3 class="text-3xl font-bold text-slate-900">Co-Rotating Twin Screw Extruder</h3>
+                        <p class="text-slate-600 mt-2 max-w-2xl">
+                            Watch the polymer transition from solid pellets to a uniform melt. The system automatically adjusts its thermal profile to perfectly match the optimum processing parameters of the selected polymer.
+                        </p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-4 gap-6">
+                        
+                        <!-- Main Canvas Area -->
+                        <div class="lg:col-span-3 hmi-panel rounded-xl p-6 relative">
+                            <!-- Controls overlay -->
+                            <div class="absolute top-6 left-6 z-10 flex items-center gap-3 bg-[#0a0e13] border border-[#2b3648] px-4 py-2 rounded-lg">
+                                <label class="text-xs font-semibold text-slate-400 uppercase tracking-wide">Selected Polymer</label>
+                                <select id="polymerSelect" class="bg-slate-800 text-cyan-400 font-bold text-sm rounded px-3 py-1 border border-slate-600 focus:outline-none focus:border-cyan-400 mono cursor-pointer">
+                                    <option value="PLA">PLA</option>
+                                    <option value="ABS">ABS</option>
+                                    <option value="PET">PET</option>
+                                    <option value="HDPE">HDPE</option>
+                                    <option value="PHA">PHA/PHB</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Status Badges -->
+                            <div class="absolute top-6 right-6 z-10 flex flex-col items-end gap-2 text-right pointer-events-none">
+                                <div class="bg-[#0a0e13]/80 border border-emerald-900 text-emerald-400 text-[10px] mono px-3 py-1 rounded flex items-center gap-2 backdrop-blur-sm">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 live-dot"></span>
+                                    SYSTEM OPTIMIZED
+                                </div>
+                                <div id="tempReadout" class="text-xl mono font-bold text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">
+                                    190 °C
+                                </div>
+                            </div>
+
+                            <!-- Canvas Container -->
+                            <div class="mt-14 relative w-full h-[300px] bg-[#0a0e13] rounded-lg border border-[#1e293b] overflow-hidden glass-barrel">
+                                <canvas id="extruderCanvas" class="absolute inset-0 w-full h-full"></canvas>
+                            </div>
+                            
+                            <p class="text-[10px] text-slate-500 mono mt-4 text-center">
+                                * Visualization shows intermeshing co-rotating twin screws, mixing zones, and die extrusion.
+                            </p>
+                        </div>
+
+                        <!-- Cheat Sheet Sidebar -->
+                        <div class="hmi-panel rounded-xl p-5 border border-slate-800">
+                            <h4 class="text-slate-200 font-semibold text-sm mono uppercase tracking-wide mb-4 border-b border-slate-700 pb-2 flex items-center">
+                                <svg class="w-4 h-4 mr-2 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Process Cheat Sheet
+                            </h4>
+                            <div class="overflow-x-auto">
+                                <table class="cheat-sheet w-full text-left text-xs mono">
+                                    <thead>
+                                        <tr>
+                                            <th class="py-2 px-2 rounded-tl">Polymer</th>
+                                            <th class="py-2 px-2 rounded-tr">Optimum Temp</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-slate-300">
+                                        <tr>
+                                            <td class="py-2 px-2 font-bold text-[#22c55e]">PLA</td>
+                                            <td class="py-2 px-2">190 - 210 °C</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 px-2 font-bold text-[#3b82f6]">ABS</td>
+                                            <td class="py-2 px-2">210 - 240 °C</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 px-2 font-bold text-[#e2e8f0]">PET</td>
+                                            <td class="py-2 px-2">270 - 290 °C</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 px-2 font-bold text-[#f59e0b]">HDPE</td>
+                                            <td class="py-2 px-2">180 - 230 °C</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 px-2 font-bold text-[#a78bfa]">PHA/PHB</td>
+                                            <td class="py-2 px-2">160 - 175 °C</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mt-6 text-[10px] text-slate-500 mono leading-relaxed">
+                                System locks parameters dynamically. If temperature deviates, autopilot engages to prevent charring or die clogging.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <div class="px-8 py-16 space-y-24 max-w-5xl mx-auto">
+
+                <section id="computation" class="scroll-mt-20">
+                    <h3 class="text-3xl font-bold text-slate-900 border-b-2 border-slate-200 pb-3 mb-8">Some Experiments with Python and Coding</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-xl border-l-4 border-blue-600 shadow-md hover:shadow-lg transition-shadow">
+                            <h4 class="text-xl font-bold text-slate-800 mb-3">FAEE Trans-esterification Simulation</h4>
+                            <p class="text-slate-600 mb-4 text-sm leading-relaxed">Experimented with a specialized simulation in Python for the trans-esterification of oil to produce Fatty Acid Ethyl Esters (FAEEs). Engineered a 1500-sample dataset for modeling complex chemical penalties, specifically trying to understand soap formation limits and effect of temperature.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">Python</span>
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">Process Simulation</span>
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">Predictive Modeling</span>
+                            </div>
+                            <a href="#" class="text-blue-600 font-semibold text-sm hover:underline flex items-center">View Source Code <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border-l-4 border-blue-600 shadow-md hover:shadow-lg transition-shadow">
+                            <h4 class="text-xl font-bold text-slate-800 mb-3">OpenFTIR: FTIR Spectrum Analyzer</h4>
+                            <p class="text-slate-600 mb-4 text-sm leading-relaxed">Created an FTIR Analyzer tool which helps create Publication ready FTIR Spectrum plots. Skill Stack in this includes Rule-based Coding & Interface Designing.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">Python</span>
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">FTIR Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="experience" class="scroll-mt-20">
+                    <h3 class="text-3xl font-bold text-slate-900 border-b-2 border-slate-200 pb-3 mb-8">Some Achievements</h3>
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-blue-300 transition-colors">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-xl font-bold text-slate-800">1st Prize IDP Solution | ACP Rangotsav 2026</h4>
+                                <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">Winner</span>
+                            </div>
+                            <p class="font-medium text-slate-700 mb-2">Valorization of UPR effluent</p>
+                            <p class="text-slate-600 text-sm mb-4">Developed and presented an award-winning technical solution for Unsaturated Polyester Resin (UPR) effluent valorization.</p>
+
+                            <div class="flex flex-wrap gap-3 mb-4">
+                                <a href="./assets/Valorization_Presentation.pdf" target="_blank" class="inline-flex items-center text-sm bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                    View Presentation
+                                </a>
+                                <a href="./assets/Valorization_Presentation.pdf" download class="inline-flex items-center text-sm bg-slate-100 text-slate-700 border border-slate-300 px-4 py-2 rounded-lg font-medium hover:bg-slate-200 transition">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    Download PDF
+                                </a>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-bold">Effluent Valorization</span>
+                                <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-bold">Industry Defined Problem</span>
+                                <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-bold">Technical Presentation</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-blue-300 transition-colors">
+                            <h4 class="text-xl font-bold text-slate-800 mb-2">Placed Top 5 | CCPCT | Awarded Certificate and Prize Money</h4>
+                            <p class="text-slate-600 text-sm mb-4">Completed a Certificate Course in Practice of Chemical Technology (CCPCT) with a total marks of 37 out of 40. Understood IP Laws, Marketing 101, and many more topics which will help navigate professional endeavours.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-bold">Certificate Course</span>
+                                <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-bold">Industrial Related Experience</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="research" class="scroll-mt-20">
+                    <h3 class="text-3xl font-bold text-slate-900 border-b-2 border-slate-200 pb-3 mb-8">Laboratory Research & Publications</h3>
+
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="text-xl font-bold text-slate-800 mb-2">Detection of Microplastics in Black Soldier Fly Larvae (BSFL)</h4>
+                            <p class="text-slate-600 text-sm mb-3">Developed rigorous experimental protocols to dissolve organic matter and isolate microplastics from complex waste substrates. Utilized compound microscopy and advanced analytical techniques to assess the environmental impact of microplastic biomagnification.</p>
+                            <div class="bg-slate-50 border-l-4 border-slate-400 p-3 mb-4 text-sm text-slate-700">
+                                <strong>Published:</strong> <em>Bombay Technologist</em> (Online ISSN: 0067-9925), 2026.
+                            </div>
+                            <a href="https://doi.org/10.36664/bt/2026/v72i1/173238" target="_blank" class="text-blue-600 font-semibold text-sm hover:underline flex items-center mb-4">
+                                Read Publication (DOI) <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">Microscopy</span>
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">Isolation Protocols</span>
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">Environmental Sustainability</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-xl font-bold text-slate-800">Bio-Based Additives for Biopolymers</h4>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-2 py-1 rounded border border-yellow-200">In Prep</span>
+                            </div>
+                            <p class="text-slate-600 text-sm mb-4">Engineered wet-lab protocols for the extraction and purification of proteins from ethanol industry waste feedstock. Conducted material compounding via extrusion processes, subsequently evaluating structural and mechanical integrity utilizing FTIR, Rheometry, UTM, and POM.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">Extrusion</span>
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">FTIR & Rheometry</span>
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">Protein Extraction</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="skills" class="scroll-mt-20">
+                    <h3 class="text-3xl font-bold text-slate-900 border-b-2 border-slate-200 pb-3 mb-8">Technical Expertise</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                                Programming & Data
+                            </h4>
+                            <ul class="space-y-2 text-sm text-slate-600">
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Python & Machine Learning</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Chemical Process Simulation</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Predictive & Probabilistic Modeling</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Data Visualization</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                                Core Eng & Wet-Lab
+                            </h4>
+                            <ul class="space-y-2 text-sm text-slate-600">
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Polymer Processing</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Polymer Recycling</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Protein Isolation & Utilization</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Microplastic Isolation</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                                Instrumentation
+                            </h4>
+                            <ul class="space-y-2 text-sm text-slate-600">
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>FTIR Spectroscopy</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Rheometry</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>UTM Testing</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>POM Microscopy</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>Compound Microscopy</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="about" class="scroll-mt-20">
+                    <h3 class="text-3xl font-bold text-slate-900 border-b-2 border-slate-200 pb-3 mb-8">Beyond the Lab</h3>
+                    <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+                        <p class="text-slate-700 mb-6 text-lg">Scientific innovation requires discipline, spatial reasoning, and strategic patience. When I am not modeling reactor mechanisms or isolating polymers, I invest my time in:</p>
+                        <ul class="grid md:grid-cols-2 gap-6 text-slate-600">
+                            <li class="flex items-start">
+                                <div class="bg-slate-100 p-2 rounded-lg mr-3 text-slate-700">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                                </div>
+                                <div>
+                                    <strong class="block text-slate-900">3D Modeling & Industrial Design</strong>
+                                    <span class="text-sm">Conceptualizing mechanisms like motor-less spinning reactors and rotating sparger disks.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-slate-100 p-2 rounded-lg mr-3 text-slate-700">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div>
+                                    <strong class="block text-slate-900">Competitive Chess</strong>
+                                    <span class="text-sm">Continuously analyzing tactical improvements and game dynamics.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-slate-100 p-2 rounded-lg mr-3 text-slate-700">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                </div>
+                                <div>
+                                    <strong class="block text-slate-900">Functional Strength Training</strong>
+                                    <span class="text-sm">Prioritizing bodyweight calisthenics and raw functional strength over standard hypertrophy.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-slate-100 p-2 rounded-lg mr-3 text-slate-700">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                </div>
+                                <div>
+                                    <strong class="block text-slate-900">Technical Writing</strong>
+                                    <span class="text-sm">Translating complex chemical phenomena into clear, accessible documentation.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <footer class="pt-8 pb-12 border-t border-slate-200 text-center text-slate-500 text-sm">
+                    <p>Viraj Ajay Mhetar &copy; 2026 | ICT Mumbai</p>
+                </footer>
             </div>
-        </section>
-
-        <section id="research">
-            <h3>Laboratory Research & Publications</h3>
-            
-            <div class="card">
-                <h4>Detection of Microplastics in Black Soldier Fly Larvae (BSFL)</h4>
-                <p>Developed rigorous experimental protocols to dissolve organic matter and isolate microplastics from complex waste substrates. Utilized compound microscopy and advanced analytical techniques to assess the environmental impact of microplastic biomagnification.</p>
-                <p style="margin-bottom: 0.5rem;"><strong>Published:</strong> <em>Bombay Technologist</em> (Online ISSN: 0067-9925), 2026.</p>
-                
-                <!-- Added DOI Link Here -->
-                <a href="https://doi.org/10.36664/bt/2026/v72i1/173238" target="_blank" style="font-size: 0.95rem; font-weight: bold; margin-bottom: 1rem; display: inline-block;">
-                    Read Publication (DOI) &rarr;
-                </a>
-
-                <div>
-                    <span class="tag">Microscopy</span>
-                    <span class="tag">Isolation Protocols</span>
-                    <span class="tag">Environmental Sustainability</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <h4>Bio-Based Additives for Biopolymers</h4>
-                <p><strong>Status:</strong> Manuscript in Preparation</p>
-                <p>Engineered wet-lab protocols for the extraction and purification of proteins from ethanol industry waste feedstock. Conducted material compounding via extrusion processes, subsequently evaluating structural and mechanical integrity utilizing FTIR, Rheometry, UTM, and POM.</p>
-                <div>
-                    <span class="tag">Extrusion</span>
-                    <span class="tag">FTIR & Rheometry</span>
-                    <span class="tag">Protein Extraction</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h3>Technical Expertise</h3>
-            <div class="skills-grid">
-                <div class="card">
-                    <h4>Programming & Data Analysis</h4>
-                    <ul>
-                        <li>Python & Machine Learning</li>
-                        <li>Chemical Process Simulation</li>
-                        <li>Predictive & Probabilistic Modeling</li>
-                        <li>Data Visualization</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h4>Core Engineering & Wet-Lab</h4>
-                    <ul>
-                        <li>Polymer Processing </li>
-                        <li>Polymer Recycling; Both Mechanical and Chemical</li>
-                        <li>Protein Isolation & Utilization</li>
-                        <li>Microplastic Isolation Methods</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h4>Instrumentation</h4>
-                    <ul>
-                        <li>Fourier Transform Infrared Spectroscopy (FTIR)</li>
-                        <li>Rheometry</li> 
-                        <li>Universal Testing Machine (UTM)</li>
-                        <li>Polarized Optical Microscopy (POM)</li>
-                        <li>Compound Microscopy</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="about">
-            <h3>Beyond the Lab</h3>
-            <p>Scientific innovation requires discipline, spatial reasoning, and strategic patience. When I am not modeling reactor mechanisms or isolating polymers, I invest my time in:</p>
-            <ul>
-                <li><strong>3D Modeling & Industrial Design:</strong> Conceptualizing mechanisms like motor-less spinning reactors and rotating sparger disks.</li>
-                <li><strong>Competitive Chess:</strong> Continuously analyzing tactical improvements and game dynamics.</li>
-                <li><strong>Functional Strength Training:</strong> Prioritizing bodyweight calisthenics and raw functional strength over standard hypertrophy.</li>
-                <li><strong>Technical Writing:</strong> Translating complex chemical phenomena into clear, accessible documentation.</li>
-            </ul>
-        </section>
-
+        </main>
     </div>
 
-    <footer>
-        <p>Viraj Ajay Mhetar &copy; 2026 | ICT Mumbai</p>
-        <p>
-            <a href="www.linkedin.com/in/viraj-mhetar-912252285" target="_blank">LinkedIn</a> &nbsp;|&nbsp; 
-            <a href="YOUR_GITHUB_URL" target="_blank">GitHub</a> &nbsp;|&nbsp; 
-            <a href="mailto:23polva_mheter@ug.ictmumbai.edu.in">Email</a>
-        </p>
-    </footer>
+    <!-- Twin Screw Extruder Scripts -->
+    <script>
+    (function () {
+        "use strict";
 
+        // Material Dictionary
+        const MATERIALS = {
+            PLA:  { tempDisp: '190 °C', meltColor: '#22c55e', pelletColor: '#86efac' },
+            ABS:  { tempDisp: '240 °C', meltColor: '#3b82f6', pelletColor: '#93c5fd' },
+            PET:  { tempDisp: '280 °C', meltColor: '#e2e8f0', pelletColor: '#ffffff' },
+            HDPE: { tempDisp: '210 °C', meltColor: '#f59e0b', pelletColor: '#fde68a' },
+            PHA:  { tempDisp: '165 °C', meltColor: '#a78bfa', pelletColor: '#ddd6fe' },
+        };
+
+        let currentMaterial = 'PLA';
+        const polymerSelect = document.getElementById('polymerSelect');
+        const tempReadout = document.getElementById('tempReadout');
+        const canvas = document.getElementById('extruderCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+
+        function resizeCanvas() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            width = rect.width;
+            height = rect.height;
+            canvas.width = width * window.devicePixelRatio;
+            canvas.height = height * window.devicePixelRatio;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Update UI when select changes
+        polymerSelect.addEventListener('change', (e) => {
+            currentMaterial = e.target.value;
+            tempReadout.textContent = MATERIALS[currentMaterial].tempDisp;
+            tempReadout.style.color = MATERIALS[currentMaterial].meltColor;
+        });
+
+        function lerpColor(hexA, hexB, t) {
+            t = Math.max(0, Math.min(1, t));
+            const a = parseInt(hexA.slice(1), 16), b = parseInt(hexB.slice(1), 16);
+            const ar = (a >> 16) & 255, ag = (a >> 8) & 255, ab = a & 255;
+            const br = (b >> 16) & 255, bg = (b >> 8) & 255, bb = b & 255;
+            return `rgb(${Math.round(ar + (br - ar) * t)},${Math.round(ag + (bg - ag) * t)},${Math.round(ab + (bb - ab) * t)})`;
+        }
+
+        // Animation State
+        let phase = 0;
+        let particles = [];
+        let trail = [];
+
+        function drawScrew(x, y, w, h, offsetPhase, isBottom) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(x, y, w, h);
+            ctx.clip();
+            
+            // Draw shaft
+            ctx.fillStyle = '#1e293b';
+            ctx.fillRect(x, y + h*0.25, w, h*0.5);
+            
+            // Draw screw flights (intermeshing illusion)
+            ctx.strokeStyle = '#475569';
+            ctx.lineWidth = h * 0.4;
+            ctx.lineCap = 'round';
+            
+            const pitch = 40;
+            const flightCount = Math.ceil(w / pitch) + 2;
+            
+            for (let i = -2; i < flightCount; i++) {
+                const startX = x + (i * pitch) + (offsetPhase % pitch);
+                ctx.beginPath();
+                if (isBottom) {
+                    ctx.moveTo(startX, y + h);
+                    ctx.lineTo(startX + pitch*0.7, y);
+                } else {
+                    ctx.moveTo(startX, y);
+                    ctx.lineTo(startX + pitch*0.7, y + h);
+                }
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        let lastTime = performance.now();
+
+        function animate(now) {
+            const dt = Math.min(0.05, (now - lastTime) / 1000);
+            lastTime = now;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            const mat = MATERIALS[currentMaterial];
+            
+            // Layout dimensions
+            const startX = width * 0.1;
+            const barrelW = width * 0.7;
+            const barrelH = 100;
+            const barrelY = (height - barrelH) / 2;
+            const dieX = startX + barrelW;
+            
+            // Heater Bands Glow
+            ctx.fillStyle = mat.meltColor;
+            ctx.globalAlpha = 0.15;
+            for(let i=0; i<4; i++) {
+                ctx.fillRect(startX + barrelW*0.2 + (i*barrelW*0.2), barrelY - 10, barrelW*0.15, barrelH + 20);
+            }
+            ctx.globalAlpha = 1;
+
+            // Draw Barrel Background (Melt filling the barrel)
+            const gradient = ctx.createLinearGradient(startX, 0, dieX, 0);
+            gradient.addColorStop(0, '#111827');
+            gradient.addColorStop(0.4, 'rgba(17, 24, 39, 0.8)');
+            gradient.addColorStop(1, mat.meltColor);
+            ctx.fillStyle = gradient;
+            ctx.fillRect(startX, barrelY, barrelW, barrelH);
+
+            // Draw Twin Screws
+            phase += dt * 100;
+            drawScrew(startX, barrelY, barrelW, barrelH/2 + 5, phase, false); // Top Screw
+            drawScrew(startX, barrelY + barrelH/2 - 5, barrelW, barrelH/2 + 5, -phase, true); // Bottom screw
+            
+            // Draw Hopper
+            ctx.fillStyle = '#1e293b';
+            ctx.beginPath();
+            ctx.moveTo(startX + 10, barrelY);
+            ctx.lineTo(startX - 20, barrelY - 60);
+            ctx.lineTo(startX + 60, barrelY - 60);
+            ctx.lineTo(startX + 40, barrelY);
+            ctx.fill();
+
+            // Particles logic (Solid pellets -> Melting -> Melt pool)
+            if (Math.random() < 0.4) {
+                particles.push({
+                    x: startX + 10 + Math.random() * 20,
+                    y: barrelY - 50,
+                    vy: 50 + Math.random() * 30,
+                    vx: 0,
+                    state: 'falling' // falling, melting
+                });
+            }
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                let p = particles[i];
+                
+                if (p.state === 'falling') {
+                    p.y += p.vy * dt;
+                    if (p.y > barrelY + 10 + Math.random() * (barrelH - 20)) {
+                        p.state = 'melting';
+                        p.vx = 80 + Math.random() * 40;
+                        p.vy = (Math.random() - 0.5) * 20;
+                    }
+                } else if (p.state === 'melting') {
+                    p.x += p.vx * dt;
+                    p.y += p.vy * dt;
+                    
+                    // Constrain to barrel
+                    if (p.y < barrelY) p.y = barrelY;
+                    if (p.y > barrelY + barrelH) p.y = barrelY + barrelH;
+                }
+
+                // Remove if passed die
+                if (p.x > dieX) {
+                    particles.splice(i, 1);
+                    continue;
+                }
+
+                // Draw Particle
+                const progress = Math.max(0, Math.min(1, (p.x - startX) / (barrelW * 0.8)));
+                const color = lerpColor(mat.pelletColor, mat.meltColor, progress);
+                const size = p.state === 'falling' ? 4 : 4 * (1 - progress);
+                
+                if (size > 0.5) {
+                    ctx.fillStyle = color;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            // Draw Barrel Outline
+            ctx.strokeStyle = '#334155';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(startX, barrelY, barrelW, barrelH);
+
+            // Draw Die Output
+            ctx.fillStyle = '#1e293b';
+            ctx.fillRect(dieX, barrelY + barrelH*0.2, 20, barrelH*0.6);
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(dieX + 20, barrelY + barrelH*0.4, 15, barrelH*0.2);
+
+            // Extrudate Strand
+            const exitX = dieX + 35;
+            const exitY = barrelY + barrelH*0.5;
+            
+            trail.push({ x: exitX, y: exitY, vy: 0, age: 0 });
+            
+            ctx.strokeStyle = mat.meltColor;
+            ctx.lineWidth = 6;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.beginPath();
+            
+            for (let i = 0; i < trail.length; i++) {
+                let t = trail[i];
+                t.age += dt;
+                t.x += 120 * dt;
+                
+                // Gravity droop effect
+                t.vy += 80 * dt; 
+                t.y += t.vy * dt;
+
+                // Stop at floor
+                if (t.y > height - 20) t.y = height - 20;
+
+                if (i === 0) ctx.moveTo(t.x, t.y);
+                else ctx.lineTo(t.x, t.y);
+            }
+            ctx.stroke();
+
+            // Clean up old trail parts
+            trail = trail.filter(t => t.x < width + 20);
+
+            requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+
+    })();
+    </script>
 </body>
 </html>
